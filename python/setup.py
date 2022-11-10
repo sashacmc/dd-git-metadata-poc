@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
+# patch setup method
 import ddtrace.gitmetadata
+
 from setuptools import setup
 
 setup(
