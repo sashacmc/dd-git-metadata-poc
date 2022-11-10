@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+import ddtrace.gitmetadata
+from setuptools import setup
 
-setup(name='Test',
-      version='1.0',
-      description='Python Test',
-      author='First Last',
-      author_email='example@mail.net',
-     )
+setup(
+    name="gitmetadatapoc",
+    version="1.0",
+    description="Python Test",
+    author="First Last",
+    author_email="example@mail.net",
+    packages=["git_metadata_poc"],
+    zip_safe=False,
+)
