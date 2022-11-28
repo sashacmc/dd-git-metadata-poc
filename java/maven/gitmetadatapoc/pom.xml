@@ -24,6 +24,12 @@
       <artifactId>dd-trace-api</artifactId>
       <version>1.1.3</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/io.github.git-commit-id/git-commit-id-maven-plugin -->
+    <dependency>
+      <groupId>io.github.git-commit-id</groupId>
+      <artifactId>git-commit-id-maven-plugin</artifactId>
+      <version>5.0.0</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -37,6 +43,31 @@
              <mainClass>com.datadoghq.gitmetadatapoc.App</mainClass>
            </manifest>
           </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <!-- add git information -->
+        <groupId>io.github.git-commit-id</groupId>
+        <artifactId>git-commit-id-maven-plugin</artifactId>
+        <version>5.0.0</version>
+        <executions>
+          <execution>
+            <id>get-the-git-infos</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+            <phase>initialize</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <generateGitPropertiesFile>true</generateGitPropertiesFile>
+          <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+          <includeOnlyProperties>
+            <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
+            <includeOnlyProperty>^git.commit.id.(abbrev|full)$</includeOnlyProperty>
+            <includeOnlyProperty>git.remote.origin.url</includeOnlyProperty>
+          </includeOnlyProperties>
+          <commitIdGenerationMode>full</commitIdGenerationMode>
         </configuration>
       </plugin>
     </plugins>
