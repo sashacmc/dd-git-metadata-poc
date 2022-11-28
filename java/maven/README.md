@@ -29,6 +29,11 @@ Build
 mvn package
 ```
 
+Download dd agent
+```bash
+wget -O dd-java-agent.jar https://dtdg.co/latest-java-tracer
+```
+
 Run
 ```bash
 java -javaagent:../../dd-java-agent.jar -Ddd.service=my-app -Ddd.env=staging -Ddd.version=1.0 -jar target/gitmetadatapoc-1.0-SNAPSHOT.jar
