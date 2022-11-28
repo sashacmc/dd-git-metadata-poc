@@ -9,6 +9,8 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+
+    id "com.gorylenko.gradle-git-properties" version "2.4.1"
 }
 
 repositories {
@@ -25,9 +27,6 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/com.datadoghq/dd-trace-api
 	implementation group: 'com.datadoghq', name: 'dd-trace-api', version: '1.1.3'
-
-	// https://mvnrepository.com/artifact/io.github.git-commit-id/git-commit-id-maven-plugin
-	implementation group: 'io.github.git-commit-id', name: 'git-commit-id-maven-plugin', version: '5.0.0'
 }
 
 application {
