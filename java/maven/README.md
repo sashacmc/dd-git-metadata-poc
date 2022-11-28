@@ -31,5 +31,5 @@ mvn package
 
 Run
 ```bash
-java -jar target/gitmetadatapoc-1.0-SNAPSHOT.jar
+java -javaagent:../../dd-java-agent.jar -Ddd.service=my-app -Ddd.env=staging -Ddd.version=1.0 -jar target/gitmetadatapoc-1.0-SNAPSHOT.jar
 ```
