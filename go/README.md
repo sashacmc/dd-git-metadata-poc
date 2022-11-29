@@ -1,6 +1,6 @@
 Build
 ```bash
-go build .
+go build -o gitmetadatapoc
 ```
 
 Run
