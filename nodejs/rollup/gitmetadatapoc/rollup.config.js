@@ -13,9 +13,9 @@ export default {
     format: 'cjs'
   },
   plugins: [
-	injectProcessEnv({ 
+    injectProcessEnv({ 
       DD_GIT_REPOSITORY_URL: git('config --get remote.origin.url'),
       DD_GIT_COMMIT_SHA: git('rev-parse HEAD'),
-	}),
+    }),
   ],
 };
