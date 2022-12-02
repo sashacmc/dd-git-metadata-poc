@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "dd-trace": "^3.9.0"
   }
