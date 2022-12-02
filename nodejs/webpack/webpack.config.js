@@ -9,6 +9,7 @@ function git(command) {
 
 module.exports = {
 	entry: './src/main.js',
+	mode: 'production',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'gitmetadatapoc-webpack.bundle.js',
