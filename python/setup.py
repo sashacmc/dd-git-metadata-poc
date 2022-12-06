@@ -12,5 +12,10 @@ setup(
     author="First Last",
     author_email="example@mail.net",
     packages=["git_metadata_poc"],
-    zip_safe=False,
+    project_urls={
+        "Bug Tracker": "https://bug.tracker.link",
+        "Documentation": "https://some.documentation.link/",
+        "Source Code": "https://github.com/sashacmc/dd-git-metadata-poc",
+    },
+    zip_safe=True,
 )
