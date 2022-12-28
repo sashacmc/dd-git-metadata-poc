@@ -1,7 +1,5 @@
 import os
-import inspect
 import subprocess
-import pkg_resources
 
 
 def __query_git(args):
