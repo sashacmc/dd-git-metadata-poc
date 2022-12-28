@@ -8,6 +8,7 @@ function git(command) {
 }
 
 module.exports = {
+	target: 'node',
 	entry: './src/main.js',
 	mode: 'production',
 	output: {
