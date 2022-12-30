@@ -1,7 +1,18 @@
 import re
-from urllib.parse import urlsplit, urlunsplit
+
+try:
+    from urllib.parse import urlsplit, urlunsplit
+except ImportError:
+    from urlparse import urlsplit, urlunsplit
 
 SCP_REGEXP = re.compile("^[a-z0-9_]+@([a-z0-9._-]+):(.*)$", re.IGNORECASE)
+
+
+def __remove_suffix(s, suffix):
+    if s.endswith(suffix):
+        return s[: -len(suffix)]
+    else:
+        return s
 
 
 def normalize_repository_url(url):
@@ -14,8 +25,8 @@ def normalize_repository_url(url):
     if match:
         # Check URLs like "git@github.com:user/project.git",
         scheme = "https"
-        hostname = match[1]
-        path = "/" + match[2]
+        hostname = match.group(1)
+        path = "/" + match.group(2)
     else:
         u = urlsplit(url)
         if u.scheme == "" and u.hostname is None:
@@ -36,7 +47,8 @@ def normalize_repository_url(url):
             scheme = "https"  # Default to HTTPS.
             port = None
 
-    path = path.removesuffix(".git/").removesuffix(".git")
+    path = __remove_suffix(path, ".git/")
+    path = __remove_suffix(path, ".git")
 
     netloc = hostname
     if port is not None:
