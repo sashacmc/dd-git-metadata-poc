@@ -1,32 +1,9 @@
-import os
-import subprocess
-
-
-def __query_git(args):
-    try:
-        p = subprocess.Popen(["git"] + args, stdout=subprocess.PIPE)
-    except EnvironmentError:
-        print("Couldn't run git")
-        return
-    ver = p.communicate()[0]
-    return ver.strip().decode("utf-8")
-
-
-def __get_commit_sha():
-    return __query_git(["rev-parse", "HEAD"])
-
-
-def __convert_url(url):
-    # TODO: convert url to https://
-    return url
-
-
-def __get_repository_url():
-    return __convert_url(__query_git(["config", "--get", "remote.origin.url"]))
+from .source_code_link import get_source_code_link
+from .repository_url import normalize_repository_url
 
 
 def __add_project_urls(setup):
-    source_code_link = __get_repository_url() + "#" + __get_commit_sha()
+    source_code_link = get_source_code_link()
 
     def patch(**attrs):
         if "project_urls" not in attrs:
@@ -37,10 +14,13 @@ def __add_project_urls(setup):
     return patch
 
 
-import distutils.core
+def patch_setup():
+    import distutils.core
+    import setuptools
 
-distutils.core.setup = __add_project_urls(distutils.core.setup)
+    distutils.core.setup = __add_project_urls(distutils.core.setup)
 
-import setuptools
+    setuptools.setup = __add_project_urls(setuptools.setup)
 
-setuptools.setup = __add_project_urls(setuptools.setup)
+
+patch_setup()

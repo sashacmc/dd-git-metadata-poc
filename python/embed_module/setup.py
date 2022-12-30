@@ -1,17 +1,18 @@
+import os
 from setuptools import setup
+
 
 def get_long_description():
     this_directory = os.path.abspath(os.path.dirname(__file__))
-    with open(
-        os.path.join(this_directory, 'README.md'), encoding='utf-8'
-    ) as f:
+    with open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
         long_description = f.read()
 
     return long_description
 
+
 setup(
     name="ddgitmetadata",
-    version="1.0.0"
+    version="1.0.0",
     description="Datadog Git Metadata embedding library",
     url="https://github.com/DataDog/TODO",
     package_urls={
@@ -29,7 +30,7 @@ setup(
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
     license="BSD",
-    packages=['ddgitmetadata'],
+    packages=["ddgitmetadata"],
     python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
     classifiers=[
         "Programming Language :: Python",
