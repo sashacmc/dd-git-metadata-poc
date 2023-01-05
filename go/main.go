@@ -3,13 +3,14 @@ package main
 import (
 	"errors"
 	"fmt"
+	"time"
+
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 	"gopkg.in/DataDog/dd-trace-go.v1/profiler"
-	"time"
 )
 
 func doSomething() {
-	time.Sleep(time.Second)
+	time.Sleep(1500 * time.Millisecond)
 	fmt.Println("gitmetadatapoc runs")
 }
 
@@ -27,6 +28,9 @@ func main() {
 		),
 		profiler.WithService("gitmetadatapoc"),
 		profiler.WithEnv("dev"),
+		profiler.WithUploadTimeout(1*time.Second),
+		profiler.WithPeriod(1*time.Second),
+		profiler.CPUDuration(1*time.Second),
 	)
 	if err != nil {
 		fmt.Println(err)
