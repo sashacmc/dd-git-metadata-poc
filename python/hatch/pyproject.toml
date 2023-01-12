@@ -24,18 +24,16 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = []
-dynamic = ["version"]
+dynamic = ["version", "urls"]
 
-[project.urls]
+[tool.hatch.version]
+path = "git_metadata_poc/__about__.py"
+
+[tool.hatch.metadata.hooks.vcs.urls]
 Documentation = "https://github.com/unknown/git-metadata-poc#readme"
 Issues = "https://github.com/unknown/git-metadata-poc/issues"
 Source = "https://github.com/unknown/git-metadata-poc"
-
-[tool.hatch.version]
-source = "vcs"
-path = "git_metadata_poc/__about__.py"
-
-[tool.hatch.metadata.hooks.vcs]
+source_code_link = "https://github.com/sashacmc/git-metadata-poc#{commit_hash}"
 
 [tool.hatch.envs.default]
 dependencies = [
