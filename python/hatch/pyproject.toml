@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatchling", "hatch-datadog-build-metadata"]
 build-backend = "hatchling.build"
 
 [project]
@@ -29,7 +29,7 @@ dynamic = ["version", "urls"]
 [tool.hatch.version]
 path = "git_metadata_poc/__about__.py"
 
-[tool.hatch.metadata.hooks.vcs.urls]
+[tool.hatch.metadata.hooks.datadog-build-metadata]
 Documentation = "https://github.com/unknown/git-metadata-poc#readme"
 Issues = "https://github.com/unknown/git-metadata-poc/issues"
 Source = "https://github.com/unknown/git-metadata-poc"
