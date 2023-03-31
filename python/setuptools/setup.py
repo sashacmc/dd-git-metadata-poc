@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 # patch setup method
-import ddgitmetadata
+import ddtrace.sourcecode.setuptools_auto
 
 from setuptools import setup
 
 setup(
     name="gitmetadatapoc",
-    version="1.0",
+    version="1.1",
     description="Python Test",
     author="First Last",
     author_email="example@mail.net",
